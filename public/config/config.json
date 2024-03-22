@@ -1,0 +1,257 @@
+﻿{
+  "map3d": {
+    "scene": {
+      "center": { "lat": 28.19313, "lng": 113.28771, "alt": 2862.8, "heading": 270.6, "pitch": -20 },
+      "scene3DOnly": false,
+      "shadows": false,
+      "removeDblClick": true,
+      "sceneMode": 3,
+      "showSun": true,
+      "showMoon": true,
+      "showSkyBox": true,
+      "showSkyAtmosphere": true,
+      "fog": true,
+      "fxaa": true,
+      "requestRenderMode": true,
+      "globe": {
+        "depthTestAgainstTerrain": false,
+        "baseColor": "#546a53",
+        "showGroundAtmosphere": true,
+        "enableLighting": false
+      },
+      "contextOptions": {
+        "webgl": {
+          "preserveDrawingBuffer": true
+        }
+      },
+      "cameraController": {
+        "zoomFactor": 3.0,
+        "minimumZoomDistance": 1,
+        "maximumZoomDistance": 50000000,
+        "enableRotate": true,
+        "enableTranslate": true,
+        "enableTilt": true,
+        "enableZoom": true,
+        "enableCollisionDetection": true,
+        "minimumCollisionTerrainHeight": 15000
+      }
+    },
+    "token": {
+      "ion": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4NGU0NWUyMC03YzE0LTQ4ODYtOWIxOS0yYjg0YTdkYzY0YmEiLCJpZCI6MTg2MjE0LCJpYXQiOjE3MDM0OTM1MzJ9.ki8MtPp06uTovGEp5P7B7LQcCvjHy8YsEmHC4wQ6-d0"
+    },
+    "control": {
+      "homeButton": true,
+      "baseLayerPicker": false,
+      "sceneModePicker": true,
+      "vrButton": false,
+      "fullscreenButton": true,
+      "navigationHelpButton": true,
+      "animation": false,
+      "timeline": false,
+      "infoBox": false,
+      "geocoder": false,
+      "selectionIndicator": false,
+      "showRenderLoopErrors": true,
+      "contextmenu": { "hasDefault": true },
+      "mouseDownView": true,
+      "zoom": { "insertIndex": 1 },
+      "compass": { "bottom": "toolbar", "left": "5px" },
+      "distanceLegend": { "left": "100px", "bottom": "2px" },
+      "locationBar": {
+        "crs": "CGCS1500_GK_Zone_3",
+        "crsDecimal": 0,
+        "template": "<div>经度:{lng}</div> <div>纬度:{lat}</div> <div>海拔：{alt}米</div> <div class='hide700'>层级：{level}</div><div>方向：{heading}°</div> <div>俯仰角：{pitch}°</div><div class='hide700'>视高：{cameraHeight}米</div>"
+      }
+    },
+    "templateValues": {
+      "dataServer": "//data.mars3d.cn",
+      "gltfServerUrl": "//data.mars3d.cn/gltf"
+    },
+    "terrain": {
+      "url": "//data.mars3d.cn/terrain",
+      "show": true,
+      "clip": true
+    },
+    "basemaps": [
+      { "id": 10, "name": "地图底图", "type": "group" },
+      {
+        "pid": 10,
+        "name": "微软影像",
+        "icon": "img/basemaps/bingAerial.png",
+        "type": "bing",
+        "layer": "Aerial",
+        "show": true
+      },
+      {
+        "pid": 10,
+        "name": "天地图电子",
+        "icon": "/img/basemaps/tdt_vec.png",
+        "type": "group",
+        "layers": [
+          { "name": "底图", "type": "tdt", "layer": "vec_d" },
+          { "name": "注记", "type": "tdt", "layer": "vec_z" }
+        ],
+        "show": false
+      }
+    ],
+    "layers": [
+      { "id": 60, "name": "地形", "type": "group" },
+      {
+        "pid": 60,
+        "type": "terrain",
+        "name": "Cesium地形",
+        "terrainType": "ion",
+        "requestWaterMask": true,
+        "radio": true,
+        "show": true
+      },
+      {
+        "pid": 60,
+        "type": "terrain",
+        "name": "Mars3D地形",
+        "terrainType": "xyz",
+        "url": "{dataServer}/terrain",
+        "requestWaterMask": true,
+        "radio": true
+      },
+
+      { "id": 20, "name": "雷达", "type": "group" },
+
+      { "id": 2010, "pid": 20, "name": "雷达组", "type": "group" },
+      {
+        "pid": 2010,
+        "type": "graphic",
+        "name": "雷达站1",
+        "data": [
+          {
+            "id": 20101,
+            "type": "ellipsoid",
+            "position": [113.21812, 28.185481, 0],
+            "style": {
+              "clampToGround": true,
+              "zIndex": 9,
+              "radii_x": 500,
+              "radii_y": 500,
+              "radii_z": 200,
+              "maximumConeDegree": 90,
+              "fill": true,
+              "materialType": "Color",
+              "materialOptions": {
+                "materialType": "Color",
+                "color": "#ffff00",
+                "opacity": 0.5
+              },
+              "outline": false
+            },
+            "attr": { "remark": "示例1" },
+            "scanPlane": {
+              "step": 0.2,
+              "style": {
+                "color": "#ffff00",
+                "opacity": 0.5
+              }
+            }
+          }
+        ],
+        "opacity": 0.2,
+        "clampToGround": true,
+        "zIndex": 1,
+        "show": true
+      },
+      {
+        "pid": 2010,
+        "type": "graphic",
+        "name": "雷达站2",
+        "data": [
+          {
+            "id": 20102,
+            "type": "ellipsoid",
+            "position": [113.224644, 28.195899, 0],
+            "style": {
+              "clampToGround": true,
+              "zIndex": 9,
+              "radii_x": 500,
+              "radii_y": 500,
+              "radii_z": 200,
+              "maximumConeDegree": 90,
+              "fill": true,
+              "materialType": "Color",
+              "materialOptions": {
+                "materialType": "Color",
+                "color": "#00ff00",
+                "opacity": 0.5
+              },
+              "outline": false
+            },
+            "attr": { "remark": "示例2" },
+            "scanPlane": {
+              "step": 0.3,
+              "style": {
+                "color": "#00ff00",
+                "opacity": 0.5
+              }
+            }
+          }
+        ],
+        "opacity": 0.2,
+        "clampToGround": true,
+        "zIndex": 1,
+        "show": true
+      },
+
+      { "id": 2050, "name": "雷达模型组", "type": "group", "exclude": true },
+      {
+        "pid": 2050,
+        "type": "graphic",
+        "name": "雷达模型1",
+        "exclude": true,
+        "data": [
+          {
+            "id": 201011,
+            "type": "modelP",
+            "position": [113.21812, 28.185481, 0],
+            "style": {
+              "clampToGround": true,
+              "zIndex": 900,
+              "url": "./model/leida.glb",
+              "scale": 1,
+              "heading": 30,
+              "pitch": 0,
+              "roll": 0,
+              "minimumPixelSize": 40
+            }
+          }
+        ],
+        "clampToGround": true,
+        "zIndex": 1,
+        "show": true
+      },
+      {
+        "pid": 2050,
+        "type": "graphic",
+        "name": "雷达模型2",
+        "exclude": true,
+        "data": [
+          {
+            "id": 201012,
+            "type": "modelP",
+            "position": [113.224644, 28.195899, 0],
+            "style": {
+              "clampToGround": true,
+              "zIndex": 900,
+              "url": "./model/leida.glb",
+              "scale": 1,
+              "heading": 30,
+              "pitch": 0,
+              "roll": 0,
+              "minimumPixelSize": 40
+            }
+          }
+        ],
+        "clampToGround": true,
+        "zIndex": 1,
+        "show": true
+      }
+    ]
+  }
+}
